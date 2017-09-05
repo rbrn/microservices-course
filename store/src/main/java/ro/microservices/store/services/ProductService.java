@@ -21,7 +21,7 @@ public class ProductService {
         return productRepository.findByCode(code).stream().findFirst().map(p ->
             ProductMapper.toModel(
                     p,
-                    inventoryClient.getProductInventory(p.getCode())
+                    inventoryClient.getProductInventory(p.getCode()).getBody()
             )
         );
     }

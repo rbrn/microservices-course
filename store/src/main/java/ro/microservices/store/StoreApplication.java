@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.stereotype.Component;
 import ro.microservices.store.entities.Category;
 import ro.microservices.store.entities.Product;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
 @EnableAutoConfiguration(exclude = {
 		org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class})
 @EnableEurekaClient
+@EnableFeignClients
 public class StoreApplication {
 
 	public static void main(String[] args) {

@@ -1,27 +1,20 @@
 package ro.microservices.store.services;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import ro.microservices.store.models.InventoryModel;
 
-import java.math.BigDecimal;
+import javax.print.attribute.standard.Media;
+import javax.validation.constraints.NotNull;
 
-@Service
-public class InventoryClient {
+@FeignClient(name = "inventory-service", fallback = InventoryClientFallBack.class)
+public interface InventoryClient {
 
-    private RestTemplate restTemplate = new RestTemplate();
-
-    @Value("${inventory.api.url}")
-    private  String apiUrl;
-
-    public InventoryModel getProductInventory(final String code){
-        final String finalApi = apiUrl+"/v1/products/"+code;
-        try {
-            return restTemplate.getForEntity(finalApi, InventoryModel.class).getBody();
-        }catch (Exception e) {
-            return InventoryModel.builder().price(BigDecimal.ZERO).stock(0).build();
-        }
-
-    }
+    @RequestMapping(value = "/v1/products/{code}", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<InventoryModel> getProductInventory(@PathVariable("code") @NotNull String code);
 }
