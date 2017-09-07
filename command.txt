@@ -11,4 +11,3 @@ sudo mvn clean package docker:build -DbuildNumber=1 -DskipTests
 
 sudo docker push esolutionsacademy/auth-costin
 
-

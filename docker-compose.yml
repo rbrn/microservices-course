@@ -15,3 +15,24 @@ services:
     environment:
       KAFKA_ZOOKEEPER_CONNECT: zk:2181
       KAFKA_ADVERTISED_HOST_NAME: localhost
+
+  auth:
+      image: costinaldea/auth:1
+      ports:
+        - "9999:9999"
+  discovery:
+        image: costinaldea/discovery:1
+        ports:
+        - "8761:8761"
+  gateway:
+        image: costinaldea/gateway:1
+        ports:
+        - "8080:8080"
+  inventory:
+        image: costinaldea/inventory:1
+        ports:
+        - "8082:8082"
+  store:
+        image: costinaldea/store:1
+        ports:
+        - "8083:8083"

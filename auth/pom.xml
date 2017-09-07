@@ -68,7 +68,7 @@
 				<configuration>
 					<baseImage>anapsix/alpine-java:8</baseImage>
 					<registryUrl>docker.io</registryUrl>
-					<imageName>costinaldea/auth-costin</imageName>
+					<imageName>costinaldea/auth</imageName>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>

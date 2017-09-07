@@ -27,12 +27,13 @@ public class JwtConfiguration {
 
     @Bean
     protected JwtAccessTokenConverter jwtAccessTokenEnhancer() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+
         org.springframework.core.io.Resource resource = new ClassPathResource("public.cert");
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         String publicKey = null;
         try {
             publicKey = new String(FileCopyUtils.copyToByteArray(resource.getInputStream()));
-            jwtAccessTokenConverter.setVerifierKey(publicKey);
+            converter.setVerifierKey(publicKey);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -61,7 +61,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<baseImage>anapsix/alpine-java:8</baseImage>
+					<registryUrl>docker.io</registryUrl>
+					<imageName>costinaldea/discovery</imageName>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+					<imageTags>
+						<imageTag>${buildNumber}</imageTag>
+						<imageTag>latest</imageTag>
+					</imageTags>
+					<entryPoint>exec java $JAVA_OPTS -jar ${project.build.finalName}.jar</entryPoint>
+					<useConfigFile>true</useConfigFile>
+				</configuration>
+			</plugin>
 		</plugins>
+
 	</build>
 
 
