@@ -16,8 +16,6 @@ import ro.microservices.store.repositories.ProductRepository;
 import java.math.BigDecimal;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = {
-		org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class})
 @EnableEurekaClient
 @EnableFeignClients
 public class StoreApplication {

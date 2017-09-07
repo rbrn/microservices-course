@@ -1,4 +1,4 @@
-package ro.microservices.store.config;
+package ro.microservices.inventory.config;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;

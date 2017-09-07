@@ -1,4 +1,4 @@
-package ro.microservices.store.models;
+package ro.microservices.inventory.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

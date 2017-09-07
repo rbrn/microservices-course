@@ -1,8 +1,8 @@
-package ro.microservices.store.config;
+package ro.microservices.inventory.config;
 
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;
-import ro.microservices.store.models.ProductModel;
+import ro.microservices.inventory.models.ProductModel;
 
 @MessagingGateway
 public interface KafkaGateway {

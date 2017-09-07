@@ -1,0 +1,14 @@
+keytool -genkeypair -alias jwt -keyalg RSA -dname CN=microservice, L=Bucuresti, c=RO -keypass mySecretKey -keystore jwt.jks -storepass mySecretKey
+keytool -list -rfc --keystore jwt.jks | openssl x509 -inform pem -pubkey
+cat >> public.cert
+
+
+curl -X POST "web_app:web_pass@localhost:9999/oauth/token" -d "grant_type=password&username=reader&password=123456789"
+
+curl -H "Authorization: Bearer $TOKEN" "localhost:8082/v1/products/prod1"
+
+sudo mvn clean package docker:build -DbuildNumber=1 -DskipTests
+
+sudo docker push esolutionsacademy/auth-costin
+
+

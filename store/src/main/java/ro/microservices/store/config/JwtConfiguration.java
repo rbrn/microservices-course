@@ -1,4 +1,4 @@
-package ro.microservices.inventory.config;
+package ro.microservices.store.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +31,8 @@ public class JwtConfiguration {
         org.springframework.core.io.Resource resource = new ClassPathResource("public.cert");
         String publicKey = null;
         try {
-            publicKey = new String(FileCopyUtils.copyToByteArray(resource.getInputStream()))
+            publicKey = new String(FileCopyUtils.copyToByteArray(resource.getInputStream()));
+            jwtAccessTokenConverter.setVerifierKey(publicKey);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

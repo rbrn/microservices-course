@@ -1,10 +1,10 @@
-package ro.microservices.store;
+package ro.microservices.inventory;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
-import ro.microservices.store.entities.Product;
+import ro.microservices.inventory.entities.Product;
 
 import java.util.List;
 

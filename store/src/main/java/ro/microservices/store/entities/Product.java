@@ -33,4 +33,9 @@ public class Product {
     @ManyToOne
     private Category category;
 
+    private boolean isPublished;
+
+    public void setIsPublished(boolean isPublished) {
+        this.isPublished = isPublished;
+    }
 }
